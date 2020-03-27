@@ -18,13 +18,28 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 	//fb[0] = 'A';
 	//fb[1] = 0x28;
 	fb[i] = c;
-	fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F);
+	fb[i + 1] = ((fg & 0x0F) << 4 | (bg & 0x0F));
+}
+
+// note this example will always write to the top
+// line of the screen
+void write_string( int colour, const char *string )
+{
+    volatile char *video = (volatile char*)0xB8000;
+    while( *string != 0 )
+    {
+        *video++ = *string++;
+        *video++ = colour;
+    }
 }
 
 /* The C function */
 int sum_of_three(int arg1, int arg2, int arg3)
 {
-	fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
-	fb_write_cell(2, 'K', FB_GREEN, FB_DARK_GREY);
+	//fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
+	//fb_write_cell(2, 'K', FB_GREEN, FB_DARK_GREY);
+	char vv[] =  "Hello world";
+	write_string(1, vv);
+	
     return arg1 + arg2 + arg3;
 }
