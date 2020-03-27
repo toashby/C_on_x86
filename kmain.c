@@ -36,10 +36,11 @@ void write_string( int colour, const char *string )
 /* The C function */
 int sum_of_three(int arg1, int arg2, int arg3)
 {
-	//fb_write_cell(0, 'A', FB_GREEN, FB_DARK_GREY);
-	//fb_write_cell(2, 'K', FB_GREEN, FB_DARK_GREY);
-	char vv[] =  "Hello world";
-	write_string(1, vv);
+	char vv[] =  "Hello world_";
+	write_string(3, vv);
+	
+	fb_write_cell(24, 'A', FB_GREEN, FB_DARK_GREY);
+	fb_write_cell(26, 'K', FB_GREEN, FB_DARK_GREY);
 	
     return arg1 + arg2 + arg3;
 }
