@@ -2,19 +2,17 @@
 #define FB_DARK_GREY 8
 #define FB_BLACK 0
 
+char *fb = (char *) 0x000B8000;
+
 /** fb_write_cell:
  *  Writes a character with the given foreground and background to position i
  *  in the framebuffer.
  *
- *  @param i  The location in the framebuffer
+ *  @param i  The location in framebuffer
  *  @param c  The character
- *  @param fg The foreground color
- *  @param bg The background color
+ *  @param fg The fg color
+ *  @param bg The bg color
  */
-
-char *fb = (char *) 0x000B8000;
-
-//write a char to the screen
 void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 {
 	//fb[0] = 'A';
@@ -23,8 +21,7 @@ void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
 	fb[i + 1] = ((fg & 0x0F) << 4 | (bg & 0x0F));
 }
 
-// note this example will always write to the top
-// line of the screen
+//Erites to top line of the screen
 void fb_write_string( int colour, const char *string )
 {
     volatile char *video = (volatile char*)0xB8000;
@@ -42,7 +39,7 @@ void fb_clear(){
     }
 }
 
-/* The C function */
+/* C function */
 int sum_of_three(int arg1, int arg2, int arg3)
 {
     fb_clear();

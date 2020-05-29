@@ -3,8 +3,8 @@ CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
          -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
 LDFLAGS = -T link.ld -melf_i386
-AS = nasm
-ASFLAGS = -f elf
+ASM = nasm
+ASMFLAGS = -f elf
 
 all: kernel.elf
 
@@ -31,7 +31,7 @@ run: os.iso
 	$(CC) $(CFLAGS)  $< -o $@
 
 %.o: %.s
-	$(AS) $(ASFLAGS) $< -o $@
+	$(ASM) $(ASMFLAGS) $< -o $@
 
 clean:
 	rm -rf *.o kernel.elf os.iso
