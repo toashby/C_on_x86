@@ -23,9 +23,9 @@ Run on Linux
 
 To launch with bochs use:  
 
-make run  
+  make run  
 if Bochs hangs type this in the terminal: c  
 press enter  
 
 To make just an iso type:  
-make
+  make
